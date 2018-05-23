@@ -1,5 +1,6 @@
 # js-interface
 
+
 ## 介绍
 
 在做一个前后分离的项目时，有些头疼 Api 之类的东西要怎么管理，在阅读 [《JavaScript 设计模式》](https://www.amazon.cn/gp/product/B00D6MT3LG) 一书时，第二章提到了在 *JavaScript* 中模拟接口 (*interface*) 的概念，以方便使用众多设计模式，因此尝试着做一个接口的模拟。由于我本职是一名后端 *Java* 开发，因此希望在这个模拟层可以加入 **接口默认实现**、**接口继承**、**方法重载** 等能力，虽然这些东西加上之后不可避免得会在性能上有所牺牲，但对我来说可以提升一些开发体验（我知道 *TypeScript*，只是想搞个轮子试试 ：P）。
@@ -61,7 +62,7 @@ IApi.method({ id: 1, name: 'getName', args: [
 
 真正决定方法是否接受该参数的是 `support` 属性，当它返回 `true` 时会检查下一个参数直到所有参数检查完毕或某个位置的参数不被接受。
 
-如果需要，可以在 `support` 中对实际入参进行特殊处理、比如转换对象、特定属性检查等等。
+如果需要，可以在 `support` 中对实际入参进行特殊处理，比如转换对象、特定属性检查等等。
 
 ---
 
@@ -70,7 +71,7 @@ IApi.method({ id: 1, name: 'getName', args: [
 ```javascript
 IApi.method({ 
     name: 'getName', 
-    // 默认实现
+    // 默认实现，不能为箭头函数！
     implement: function() {
     	return "IApi"   
     }
